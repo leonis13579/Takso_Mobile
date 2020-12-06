@@ -1,6 +1,7 @@
 package ru.realityfamily.takso_mobile.Fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import ru.realityfamily.takso_mobile.MainActivity;
+import ru.realityfamily.takso_mobile.Models.AuthData;
 import ru.realityfamily.takso_mobile.R;
+
+import static ru.realityfamily.takso_mobile.MainActivity.authData;
 
 public class AuthFragment extends MyFragment {
 
@@ -21,10 +25,11 @@ public class AuthFragment extends MyFragment {
     Button enter;
     TextView register;
 
-    String login_value = "";
-
     public AuthFragment(String Title) {
         this.Title = Title;
+        if (authData == null) {
+            authData = new AuthData();
+        }
     }
 
     @Nullable
@@ -37,29 +42,31 @@ public class AuthFragment extends MyFragment {
         enter = v.findViewById(R.id.login_enterButton);
         register = v.findViewById(R.id.reg_advice);
 
-        if (!login_value.isEmpty()) {
-            login.setText(login_value);
+        if (!authData.getLogin().isEmpty()) {
+            Log.d("AuthFragment", authData.getLogin());
+            login.setText(authData.getLogin());
         }
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).changeFragment(new RegisterFragment(getString(R.string.register)));
+                ((MainActivity) getActivity()).changeFragment(new RegisterPersonTypeChoose("Выберите кем вы хотите зарегистрироваться"));
             }
         });
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity ma = (MainActivity) getActivity();
-                ma.clearHistory();
-                ma.changeFragment(new MapFragment("Заказы"));
+                if (!login.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
+                    authData.setLogin(login.getText().toString());
+                    authData.setPassword(password.getText().toString());
+
+                    MainActivity ma = (MainActivity) getActivity();
+                    ma.clearHistory();
+                    ma.changeFragment(new MapFragment("Заказы"));
+                }
             }
         });
 
         return v;
-    }
-
-    public void setLogin(String reg_login) {
-        this.login_value = reg_login;
     }
 
     private AuthFragment getFragment() {

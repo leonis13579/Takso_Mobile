@@ -11,4 +11,6 @@
     <string name="create_password">Придумайте Ваш пароль</string>
     <string name="repeat_password">Повторите пароль</string>
     <string name="register">Зарегистрироваться</string>
+    <string name="Client">Клиент</string>
+    <string name="Driver">Водитель</string>
 </resources>

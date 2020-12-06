@@ -12,12 +12,15 @@ import android.widget.TextView;
 import ru.realityfamily.takso_mobile.Fragment.AuthFragment;
 import ru.realityfamily.takso_mobile.Fragment.MyFragment;
 import ru.realityfamily.takso_mobile.Fragment.PersonFragment;
+import ru.realityfamily.takso_mobile.Models.AuthData;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView appBarBackBtn;
     ImageView appBarExtrBtn;
     TextView appBarTitle;
+
+    public static AuthData authData;
 
     BackButtonStatus backButtonStatus;
     public enum BackButtonStatus{
@@ -48,7 +51,13 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.fragmentContent, fragment).addToBackStack(fragment.Title).commit();
         getSupportFragmentManager().executePendingTransactions();
 
-        appBarBackBtn.setVisibility(View.VISIBLE);
+        if (backButtonStatus == BackButtonStatus.back) {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                appBarBackBtn.setVisibility(View.VISIBLE);
+            } else {
+                appBarBackBtn.setVisibility(View.INVISIBLE);
+            }
+        }
     }
 
     public void backFragment() {
@@ -59,16 +68,19 @@ public class MainActivity extends AppCompatActivity {
             appBarTitle.setText(Title);
         }
 
-        if (fm.getBackStackEntryCount() > 1 && backButtonStatus == BackButtonStatus.back) {
+        if (fm.getBackStackEntryCount() < 3 && backButtonStatus == BackButtonStatus.back) {
             appBarBackBtn.setVisibility(View.INVISIBLE);
         }
     }
 
-    public void clearHistory() {
+    public MainActivity clearHistory() {
         getSupportFragmentManager().popBackStack(null ,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        return this;
     }
 
     public void changeBackButton(BackButtonStatus backButtonStatus) {
+        this.backButtonStatus = backButtonStatus;
         switch (backButtonStatus) {
             case back:
                 appBarBackBtn.setImageResource(R.drawable.back_arrow);
@@ -78,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
                         backFragment();
                     }
                 });
+
+                if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                    appBarBackBtn.setVisibility(View.VISIBLE);
+                }
                 break;
 
             case person:
@@ -88,6 +104,8 @@ public class MainActivity extends AppCompatActivity {
                         changeFragment(new PersonFragment("Личный кабинет"));
                     }
                 });
+
+                appBarBackBtn.setVisibility(View.VISIBLE);
                 break;
         }
 

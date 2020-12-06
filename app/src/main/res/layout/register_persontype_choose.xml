@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="50dp"
+    android:paddingVertical="100dp"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical|start">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/clientChoose"
+            android:background="@drawable/auth_button"
+            android:text="@string/Client"
+            android:textColor="@color/text_color"
+
+            android:paddingHorizontal="80dp"
+            android:paddingVertical="20dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical|end">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/driverChoose"
+            android:background="@drawable/auth_button"
+            android:text="@string/Driver"
+            android:textColor="@color/text_color"
+
+            android:paddingHorizontal="80dp"
+            android:paddingVertical="20dp"/>
+    </LinearLayout>
+
+</LinearLayout>

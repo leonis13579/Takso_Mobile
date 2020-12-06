@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import ru.realityfamily.takso_mobile.MainActivity;
 import ru.realityfamily.takso_mobile.R;
 
+import static ru.realityfamily.takso_mobile.MainActivity.authData;
+
 public class RegisterFragment extends MyFragment {
     EditText login;
     EditText pass;
@@ -65,13 +67,12 @@ public class RegisterFragment extends MyFragment {
                     !pass.getText().toString().isEmpty() &&
                     !rep_pass.getText().toString().isEmpty()) {
                     if (pass.getText().toString().equals(rep_pass.getText().toString())) {
+                        authData.setLogin(login.getText().toString());
+                        authData.setPassword(pass.getText().toString());
 
                         // нужно дописать метод отправки данных и все, что ниже нужно обернуть в ситуации получения удачного ответа
 
-                        String name = getActivity().getSupportFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 2).getName();
-                        getActivity().getSupportFragmentManager().executePendingTransactions();
-                        Fragment fragment = getActivity().getSupportFragmentManager().findFragmentByTag(name);
-                        ((MainActivity) getActivity()).backFragment();
+                        ((MainActivity) getActivity()).clearHistory().changeFragment(new AuthFragment(getString(R.string.auth)));
                     } else {
                         Toast.makeText(getContext(), "Пароли введенные вами ранее не соападают", Toast.LENGTH_SHORT).show();
                     }
