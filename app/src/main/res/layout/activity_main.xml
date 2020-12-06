@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:id="@+id/appBar"
+        android:gravity="center"
+        android:background="@color/backgroundSecond">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/appBarBackBtn"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+
+                android:padding="@dimen/normal_padding"
+                android:background="@android:color/transparent"
+                android:src="@drawable/back_arrow"
+                android:visibility="invisible"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"/>
+            <TextView
+                android:id="@+id/appBarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                tools:text="nvjfsd"
+                android:textAlignment="center"
+                android:textSize="@dimen/normal_text"
+                android:textColor="@color/text_color"
+                android:textStyle="bold"
+
+                android:layout_toEndOf="@id/appBarBackBtn"
+                android:layout_toStartOf="@id/appBarExtrBtn"
+                android:layout_centerInParent="true"/>
+            <ImageView
+                android:id="@+id/appBarExtrBtn"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+
+                android:padding="@dimen/normal_padding"
+                android:background="@android:color/transparent"
+
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:id="@+id/fragmentContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

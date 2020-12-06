@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Takso_Mobile</string>
+    <string name="enter_login">Введите ваш логин</string>
+    <string name="enter_password">Введите ваш пароль</string>
+    <string name="password">Пароль</string>
+    <string name="login">Логин</string>
+    <string name="auth">Авторизация</string>
+    <string name="enter">Войти</string>
+    <string name="register_advice">Если у вас нет аккаунта, то вы можете зарегистрироваться</string>
+    <string name="create_login">Придумайте Ваш логин</string>
+    <string name="create_password">Придумайте Ваш пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="register">Зарегистрироваться</string>
+</resources>

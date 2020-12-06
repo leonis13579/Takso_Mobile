@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:padding="40dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginBottom="40dp"
+        app:cardCornerRadius="20dp"
+        android:id="@+id/authCard"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="25dp"
+            android:orientation="vertical"
+            android:background="@color/backgroundSecond">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/create_login"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/auth_text_size"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/reg_login"
+                android:background="@drawable/edittext_background"
+                android:hint="@string/login"
+                android:textSize="@dimen/auth_text_size"
+                android:padding="@dimen/normal_padding"
+
+                android:layout_marginTop="@dimen/small_margin"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/create_password"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/auth_text_size"
+
+                android:layout_marginTop="@dimen/normal_margin"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/reg_password"
+                android:background="@drawable/edittext_background"
+                android:hint="@string/password"
+                android:textSize="@dimen/auth_text_size"
+                android:padding="@dimen/normal_padding"
+
+                android:layout_marginTop="@dimen/small_margin"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="@string/repeat_password"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/auth_text_size"
+
+                android:layout_marginTop="@dimen/normal_margin"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/reg_repeat_pass"
+                android:background="@drawable/edittext_background"
+                android:hint="@string/password"
+                android:textSize="@dimen/auth_text_size"
+                android:padding="@dimen/normal_padding"
+
+                android:layout_marginTop="@dimen/small_margin"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/registerButton"
+        android:background="@drawable/auth_button"
+        android:text="@string/register"
+        android:textColor="@color/text_color"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
