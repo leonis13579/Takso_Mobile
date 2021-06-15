@@ -4,23 +4,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import ru.realityfamily.takso_mobile.DI.ServiceLocator;
 import ru.realityfamily.takso_mobile.Fragment.AuthFragment;
 import ru.realityfamily.takso_mobile.Fragment.MyFragment;
 import ru.realityfamily.takso_mobile.Fragment.PersonFragment;
+import ru.realityfamily.takso_mobile.Logic.Network.LineNetworkLogic;
+import ru.realityfamily.takso_mobile.Logic.Network.PersonNetworkLogic;
 import ru.realityfamily.takso_mobile.Models.AuthData;
+import ru.realityfamily.takso_mobile.Models.Car;
+import ru.realityfamily.takso_mobile.Models.Person;
+import ru.realityfamily.takso_mobile.Network.MyRetrofit;
+import ru.realityfamily.takso_mobile.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView appBarBackBtn;
-    ImageView appBarExtrBtn;
-    TextView appBarTitle;
+    private ActivityMainBinding binding;
 
-    public static AuthData authData;
+    MainActivity mainActivity = this;
 
     BackButtonStatus backButtonStatus;
     public enum BackButtonStatus{
@@ -31,31 +41,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ServiceLocator.init(this, this);
 
-        appBarBackBtn = findViewById(R.id.appBarBackBtn);
-        appBarExtrBtn = findViewById(R.id.appBarExtrBtn);
-        appBarTitle = findViewById(R.id.appBarTitle);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+
+        getWindow().setStatusBarColor(getColor(R.color.backgroundSecond));
 
         changeBackButton(BackButtonStatus.back);
 
-        AuthFragment af = new AuthFragment(getString(R.string.auth));
+        AuthFragment af = new AuthFragment();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContent, af).addToBackStack(af.Title).commit();
-        appBarTitle.setText(af.Title);
+        binding.appBarTitle.setText(af.Title);
     }
 
     public void changeFragment(MyFragment fragment) {
-        appBarTitle.setText(fragment.Title);
+        binding.appBarTitle.setText(fragment.Title);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContent, fragment).addToBackStack(fragment.Title).commit();
         getSupportFragmentManager().executePendingTransactions();
 
         if (backButtonStatus == BackButtonStatus.back) {
             if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-                appBarBackBtn.setVisibility(View.VISIBLE);
+                binding.appBarBackBtn.setVisibility(View.VISIBLE);
             } else {
-                appBarBackBtn.setVisibility(View.INVISIBLE);
+                binding.appBarBackBtn.setVisibility(View.INVISIBLE);
             }
         }
     }
@@ -65,11 +77,11 @@ public class MainActivity extends AppCompatActivity {
         if (fm.getBackStackEntryCount() > 1) {
             fm.popBackStack();
             String Title = fm.getBackStackEntryAt(fm.getBackStackEntryCount() - 2).getName();
-            appBarTitle.setText(Title);
+            binding.appBarTitle.setText(Title);
         }
 
         if (fm.getBackStackEntryCount() < 3 && backButtonStatus == BackButtonStatus.back) {
-            appBarBackBtn.setVisibility(View.INVISIBLE);
+            binding.appBarBackBtn.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -83,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
         this.backButtonStatus = backButtonStatus;
         switch (backButtonStatus) {
             case back:
-                appBarBackBtn.setImageResource(R.drawable.back_arrow);
-                appBarBackBtn.setOnClickListener(new View.OnClickListener() {
+                binding.appBarBackBtn.setImageResource(R.drawable.back_arrow);
+                binding.appBarBackBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         backFragment();
@@ -92,22 +104,51 @@ public class MainActivity extends AppCompatActivity {
                 });
 
                 if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
-                    appBarBackBtn.setVisibility(View.VISIBLE);
+                    binding.appBarBackBtn.setVisibility(View.VISIBLE);
                 }
                 break;
 
             case person:
-                appBarBackBtn.setImageResource(R.drawable.person);
-                appBarBackBtn.setOnClickListener(new View.OnClickListener() {
+                binding.appBarBackBtn.setImageResource(R.drawable.person);
+                binding.appBarBackBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        changeFragment(new PersonFragment("Личный кабинет"));
+                        ServiceLocator.GetInstance().personNetworkLogic.getDriverInfo(mainActivity);
                     }
                 });
 
-                appBarBackBtn.setVisibility(View.VISIBLE);
+                binding.appBarBackBtn.setVisibility(View.VISIBLE);
                 break;
         }
 
+    }
+
+    public void setAppBarExtrBtn(int Visibility) {
+        binding.appBarExtrBtn.setVisibility(Visibility);
+    }
+
+    public void setAppBarExtrBtn(int DrawableResource, View.OnClickListener Listener) {
+        binding.appBarExtrBtn.setVisibility(View.VISIBLE);
+        binding.appBarExtrBtn.setImageResource(DrawableResource);
+        binding.appBarExtrBtn.setOnClickListener(Listener);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if (getSupportFragmentManager().getBackStackEntryCount() > 1) {
+                backFragment();
+                return false;
+            } else {
+                finish();
+            }
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ServiceLocator.GetInstance().lineNetworkLogic.closeLine(mainActivity, this, null);
     }
 }

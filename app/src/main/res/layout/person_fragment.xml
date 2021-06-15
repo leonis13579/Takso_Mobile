@@ -1,6 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/personInfo"
+        android:padding="@dimen/normal_padding"
+        android:background="@color/backgroundSecond"
+        android:layout_margin="@dimen/normal_margin">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/personInfoImage"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/personInfoName"
+            tools:text="Шешуков Леонид"
+            android:textColor="@color/text_color"
+            android:textSize="25sp"
+
+            android:layout_toEndOf="@id/personInfoImage"
+            android:layout_toStartOf="@id/personInfoNext"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="@dimen/normal_padding"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/personInfoNext"
+            android:src="@drawable/forward_arrow"
+
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_below="@id/personInfo"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/personExit"
+        android:paddingHorizontal="@dimen/normal_padding">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/personCar"
+                android:padding="@dimen/normal_padding"
+                android:background="@color/backgroundSecond"
+                android:layout_marginBottom="@dimen/normal_margin">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/PersonCar"
+                    android:textColor="@color/text_color"
+                    android:textSize="20sp"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/personCarName"
+                    android:text="О969ХТ 777"
+                    android:textColor="@color/text_color"
+                    android:textSize="17sp"
+
+                    android:layout_toStartOf="@id/personCarNext"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/small_margin"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/personCarNext"
+                    android:src="@drawable/forward_arrow"
+
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/personHistory"
+                android:padding="@dimen/normal_padding"
+                android:background="@color/backgroundSecond">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/personHistory"
+                    android:textColor="@color/text_color"
+                    android:textSize="20sp"
+
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/personHistoryCount"
+                    android:text="110"
+                    android:textColor="@color/text_color"
+                    android:textSize="17sp"
+
+                    android:layout_toStartOf="@id/personHistoryNext"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/small_margin"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/personHistoryNext"
+                    android:src="@drawable/forward_arrow"
+
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/personExit"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@color/text_color"
+        android:id="@+id/personExit"
+
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/normal_margin"/>
+</RelativeLayout>

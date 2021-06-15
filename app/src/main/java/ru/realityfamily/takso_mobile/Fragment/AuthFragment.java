@@ -12,64 +12,47 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import ru.realityfamily.takso_mobile.DI.ServiceLocator;
+import ru.realityfamily.takso_mobile.Logic.Network.AuthNetworkLogic;
 import ru.realityfamily.takso_mobile.MainActivity;
 import ru.realityfamily.takso_mobile.Models.AuthData;
 import ru.realityfamily.takso_mobile.R;
-
-import static ru.realityfamily.takso_mobile.MainActivity.authData;
+import ru.realityfamily.takso_mobile.databinding.AuthFragmentBinding;
 
 public class AuthFragment extends MyFragment {
+    AuthFragmentBinding binding;
 
-    EditText login;
-    EditText password;
-    Button enter;
-    TextView register;
-
-    public AuthFragment(String Title) {
-        this.Title = Title;
-        if (authData == null) {
-            authData = new AuthData();
-        }
+    public AuthFragment() {
+        this.Title = "Авторизация";
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.auth_fragment, container, false);
+        binding = AuthFragmentBinding.inflate(inflater, container, false);
 
-        login = v.findViewById(R.id.login_login);
-        password = v.findViewById(R.id.login_pass);
-        enter = v.findViewById(R.id.login_enterButton);
-        register = v.findViewById(R.id.reg_advice);
-
-        if (!authData.getLogin().isEmpty()) {
-            Log.d("AuthFragment", authData.getLogin());
-            login.setText(authData.getLogin());
+        if (!AuthData.getInstance().getLogin().isEmpty()) {
+            Log.d("AuthFragment", AuthData.getInstance().getLogin());
+            binding.loginLogin.setText(AuthData.getInstance().getLogin());
         }
-        register.setOnClickListener(new View.OnClickListener() {
+        binding.regAdvice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity) getActivity()).changeFragment(new RegisterPersonTypeChoose("Выберите кем вы хотите зарегистрироваться"));
+                ((MainActivity) getActivity()).changeFragment(new RegisterFragment());
             }
         });
-        enter.setOnClickListener(new View.OnClickListener() {
+        binding.loginEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!login.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
-                    authData.setLogin(login.getText().toString());
-                    authData.setPassword(password.getText().toString());
+                if (!binding.loginLogin.getText().toString().isEmpty() && !binding.loginPass.getText().toString().isEmpty()) {
+                    AuthData.getInstance().setLogin(binding.loginLogin.getText().toString());
+                    AuthData.getInstance().setPassword(binding.loginPass.getText().toString());
 
-                    MainActivity ma = (MainActivity) getActivity();
-                    ma.clearHistory();
-                    ma.changeFragment(new MapFragment("Заказы"));
+                    ServiceLocator.GetInstance().authNetworkLogic.login((MainActivity) getActivity());
                 }
             }
         });
 
-        return v;
-    }
-
-    private AuthFragment getFragment() {
-        return this;
+        return binding.getRoot();
     }
 }

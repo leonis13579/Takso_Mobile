@@ -12,4 +12,6 @@
     <color name="backgroundSecond">#333333</color>
 
     <color name="text_color">#FFFFFF</color>
+    <color name="Green">#269926</color>
+    <color name="Red">#CC0000</color>
 </resources>

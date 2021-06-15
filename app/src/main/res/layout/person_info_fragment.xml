@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_above="@+id/personInfoCommit"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginEnd="@dimen/normal_margin"
+        android:layout_marginStart="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/normal_margin">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            app:cardCornerRadius="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/backgroundSecond"
+                android:orientation="vertical"
+                android:padding="25dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/PersonName"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/auth_text_size" />
+
+                <EditText
+                    android:id="@+id/personInfoName"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:background="@drawable/edittext_background"
+                    android:hint="@string/PersonName"
+                    android:padding="@dimen/normal_padding"
+
+                    android:textSize="@dimen/auth_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:text="@string/PersonLastName"
+                    android:textColor="@color/text_color"
+
+                    android:textSize="@dimen/auth_text_size" />
+
+                <EditText
+                    android:id="@+id/personInfoLastName"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:background="@drawable/edittext_background"
+                    android:hint="@string/PersonLastName"
+                    android:padding="@dimen/normal_padding"
+
+                    android:textSize="@dimen/auth_text_size" />
+
+                <TextView
+                    android:id="@+id/personInfoCodeNameInfo"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:text="@string/PersonCodeName"
+                    android:textColor="@color/text_color"
+
+                    android:textSize="@dimen/auth_text_size" />
+
+                <EditText
+                    android:id="@+id/personInfoCodeName"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:background="@drawable/edittext_background"
+                    android:hint="@string/PersonCodeName"
+                    android:padding="@dimen/normal_padding"
+
+                    android:textSize="@dimen/auth_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:text="@string/PersonEmail"
+                    android:textColor="@color/text_color"
+
+                    android:textSize="@dimen/auth_text_size" />
+
+                <EditText
+                    android:id="@+id/personInfoEmail"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:background="@drawable/edittext_background"
+                    android:hint="@string/PersonEmail"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/normal_padding"
+
+                    android:textSize="@dimen/auth_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/normal_margin"
+                    android:text="@string/PersonPhone"
+                    android:textColor="@color/text_color"
+
+                    android:textSize="@dimen/auth_text_size" />
+
+                <EditText
+                    android:id="@+id/personInfoPhone"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:background="@drawable/edittext_background"
+                    android:hint="@string/PersonPhone"
+                    android:inputType="phone"
+                    android:padding="@dimen/normal_padding"
+
+                    android:textSize="@dimen/auth_text_size" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/personInfoCommit"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/normal_margin"
+        android:background="@color/Green"
+        android:text="@string/Save"
+
+        android:textColor="@color/text_color"
+        android:textSize="15sp" />
+</RelativeLayout>

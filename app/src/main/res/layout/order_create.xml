@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/backgroundSecond"
+    android:padding="@dimen/normal_padding">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:text="@string/AddressFrom"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/auth_text_size"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/createOrderFrom"
+            android:background="@drawable/edittext_background"
+            android:hint="@string/YourAddress"
+            android:textSize="@dimen/auth_text_size"
+            android:padding="@dimen/normal_padding"
+
+            android:layout_marginTop="@dimen/small_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/AddressTo"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/auth_text_size"
+
+            android:layout_marginTop="@dimen/normal_margin"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/createOrderTo"
+            android:background="@drawable/edittext_background"
+            android:hint="@string/AddressToHint"
+            android:textSize="@dimen/auth_text_size"
+            android:padding="@dimen/normal_padding"
+
+            android:layout_marginTop="@dimen/small_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/Comment"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/auth_text_size"
+
+            android:layout_marginTop="@dimen/normal_margin"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/createOrderComment"
+            android:background="@drawable/edittext_background"
+            android:hint="@string/Comment"
+            android:textSize="@dimen/auth_text_size"
+            android:padding="@dimen/normal_padding"
+
+            android:layout_marginTop="@dimen/small_margin"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/createOrderCommit"
+        android:text="@string/CallTakso"
+        android:textSize="20sp"
+        android:textColor="@color/text_color"
+        android:background="#269926"
+
+        android:layout_marginTop="@dimen/normal_margin"/>
+</LinearLayout>

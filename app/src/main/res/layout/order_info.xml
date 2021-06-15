@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/backgroundSecond">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:layout_margin="@dimen/normal_margin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/orderInfoTimeToInfo"
+            android:textColor="@color/text_color"
+            android:text="@string/AddressFrom"
+            tools:text="Водитель прибудет через"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/orderInfoTimeTo"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            android:textSize="23sp"
+            tools:text="20 мин" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:layout_margin="@dimen/normal_margin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@color/text_color"
+            android:text="@string/AddressFrom" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/orderInfoFrom"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            android:textSize="23sp"
+            tools:text="Профсоюзная ул., д 134, корп. 3, под. 4" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:layout_margin="@dimen/normal_margin">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@color/text_color"
+            android:text="@string/AddressTo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/orderInfoTo"
+            android:textStyle="bold"
+            android:textColor="@color/text_color"
+            android:textSize="23sp"
+            tools:text="Профсоюзная ул., д 134, корп. 3, под. 4" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+
+            android:orientation="vertical"
+            android:layout_margin="@dimen/normal_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textColor="@color/text_color"
+                android:text="@string/OrderPrice" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/orderInfoPrice"
+                android:textStyle="bold"
+                android:textColor="@color/text_color"
+                android:textSize="23sp"
+                tools:text="2500.0 руб." />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:src="@color/white"
+            android:paddingVertical="@dimen/normal_padding"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+
+            android:orientation="vertical"
+            android:layout_margin="@dimen/normal_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textColor="@color/text_color"
+                android:text="@string/OrderStatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/orderInfoStatus"
+                android:textStyle="bold"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                tools:text="Отменен водителем" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="@color/white"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:id="@+id/orderInfoCancel"
+        android:text="@string/CancelOrder"
+        android:textSize="20sp"
+        android:textColor="@color/text_color"
+        android:background="@android:color/holo_red_dark"
+        android:layout_margin="@dimen/small_margin"/>
+
+</LinearLayout>

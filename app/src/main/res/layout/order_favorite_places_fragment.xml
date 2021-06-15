@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:layout_margin="@dimen/normal_margin">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/ordersFavoritePlacesHome"
+            android:padding="@dimen/normal_padding"
+            android:background="@color/backgroundSecond"
+
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/normal_margin">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ordersFavoritePlacesHomeNext">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/Home"
+                    android:textColor="@color/text_color"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/ordersFavoritePlacesHomeName"
+                    android:text="Профсоюзная ул., д. 136, корп. 3"
+                    android:textColor="@color/text_color"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/ordersFavoritePlacesHomeNext"
+                android:src="@drawable/forward_arrow"
+
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/ordersFavoritePlacesWork"
+            android:padding="@dimen/normal_padding"
+            android:background="@color/backgroundSecond"
+
+            android:layout_below="@id/ordersFavoritePlacesHome"
+            android:layout_marginBottom="@dimen/normal_margin">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ordersFavoritePlacesWorkNext">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/Work"
+                    android:textColor="@color/text_color"
+                    android:textSize="15sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/ordersFavoritePlacesWorkName"
+                    android:text="Профсоюзная ул., д. 136, корп. 3"
+                    android:textColor="@color/text_color"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/ordersFavoritePlacesWorkNext"
+                android:src="@drawable/forward_arrow"
+
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:id="@+id/ordersFavoritePlacesRecyclerView"
+
+            android:layout_below="@id/ordersFavoritePlacesWork"/>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -3,6 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/bottom_sheet"/>
+    <com.yandex.mapkit.mapview.MapView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mapView"/>
+
+    <include layout="@layout/bottom_sheet"
+        android:id="@+id/bottom_sheet"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,25 +1,29 @@
 package ru.realityfamily.takso_mobile.Models;
 
 public class AuthData {
-    public enum PersonType {
-        Client,
-        Driver
+    private static AuthData Instance = new AuthData();
+
+    public static AuthData getInstance() {
+        if (Instance == null) {
+            Instance = new AuthData();
+        }
+
+        return Instance;
+    }
+
+    public static AuthData setInstance(AuthData authData) {
+        Instance = authData;
+        return Instance;
     }
 
     String login = "";
     String password = "";
-    PersonType type;
-    String token = "";
+    Long token = 0L;
+    String type = "Driver";
 
 
-    public AuthData() {
+    private AuthData() {
 
-    }
-
-    public AuthData(String login, String password, PersonType type) {
-        this.login = login;
-        this.password = password;
-        this.type = type;
     }
 
     public String getLogin() {
@@ -28,6 +32,7 @@ public class AuthData {
 
     public void setLogin(String login) {
         this.login = login;
+        this.password = "";
     }
 
     public String getPassword() {
@@ -38,19 +43,11 @@ public class AuthData {
         this.password = password;
     }
 
-    public PersonType getType() {
-        return type;
-    }
-
-    public void setType(PersonType type) {
-        this.type = type;
-    }
-
-    public String getToken() {
+    public Long getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public void setToken(Long token) {
         this.token = token;
     }
 }
